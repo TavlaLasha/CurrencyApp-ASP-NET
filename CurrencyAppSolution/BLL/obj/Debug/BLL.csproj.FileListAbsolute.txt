@@ -1,0 +1,15 @@
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\BLL\bin\Debug\BLL.dll
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\BLL\bin\Debug\BLL.pdb
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\BLL\bin\Debug\DAL.dll
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\BLL\bin\Debug\EntityFramework.dll
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\BLL\bin\Debug\EntityFramework.SqlServer.dll
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\BLL\bin\Debug\Models.dll
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\BLL\bin\Debug\Newtonsoft.Json.dll
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\BLL\bin\Debug\DAL.pdb
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\BLL\bin\Debug\Models.pdb
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\BLL\bin\Debug\EntityFramework.xml
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\BLL\bin\Debug\EntityFramework.SqlServer.xml
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\BLL\bin\Debug\Newtonsoft.Json.xml
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\BLL\obj\Debug\BLL.dll
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\BLL\obj\Debug\BLL.pdb

@@ -5,13 +5,13 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyApp", "CurrencyApp\CurrencyApp.csproj", "{9B05FCBA-D263-4EA9-A814-CDEC00748C69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyAppService", "CurrencyAppService\CurrencyAppService.csproj", "{DA71DCC3-837E-401A-8BE5-3A81658777B9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{60EDFD0D-4D31-4204-B0CE-EC6D930E1884}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{D51F90F7-5A85-4F75-B33F-766A6526A32C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{876970BD-1D96-4745-B92A-EE786800365F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyService", "CurrencyService\CurrencyService.csproj", "{CE43F1D5-3C55-424D-949A-1DC5D3329894}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,6 @@ Global
 		{9B05FCBA-D263-4EA9-A814-CDEC00748C69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B05FCBA-D263-4EA9-A814-CDEC00748C69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B05FCBA-D263-4EA9-A814-CDEC00748C69}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DA71DCC3-837E-401A-8BE5-3A81658777B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DA71DCC3-837E-401A-8BE5-3A81658777B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DA71DCC3-837E-401A-8BE5-3A81658777B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DA71DCC3-837E-401A-8BE5-3A81658777B9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{60EDFD0D-4D31-4204-B0CE-EC6D930E1884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{60EDFD0D-4D31-4204-B0CE-EC6D930E1884}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60EDFD0D-4D31-4204-B0CE-EC6D930E1884}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{876970BD-1D96-4745-B92A-EE786800365F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{876970BD-1D96-4745-B92A-EE786800365F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{876970BD-1D96-4745-B92A-EE786800365F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE43F1D5-3C55-424D-949A-1DC5D3329894}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE43F1D5-3C55-424D-949A-1DC5D3329894}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE43F1D5-3C55-424D-949A-1DC5D3329894}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE43F1D5-3C55-424D-949A-1DC5D3329894}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

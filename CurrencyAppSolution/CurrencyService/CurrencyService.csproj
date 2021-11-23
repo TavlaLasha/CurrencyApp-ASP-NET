@@ -9,12 +9,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{DA71DCC3-837E-401A-8BE5-3A81658777B9}</ProjectGuid>
+    <ProjectGuid>{CE43F1D5-3C55-424D-949A-1DC5D3329894}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CurrencyAppService</RootNamespace>
-    <AssemblyName>CurrencyAppService</AssemblyName>
+    <RootNamespace>CurrencyService</RootNamespace>
+    <AssemblyName>CurrencyService</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -272,9 +272,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51078</DevelopmentServerPort>
+          <DevelopmentServerPort>52893</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51078/</IISUrl>
+          <IISUrl>http://localhost:52893/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
