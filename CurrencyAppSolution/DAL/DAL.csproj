@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EF\Currency.cs" />
+    <Compile Include="EF\CurrencyChangeLog.cs" />
     <Compile Include="EF\CurrencyDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

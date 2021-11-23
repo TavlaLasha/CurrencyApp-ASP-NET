@@ -9,7 +9,6 @@ namespace Models.DataViewModels.CurrencyManagement
 {
     public class CurrencyDTO
     {
-        [Required]
         public string code { get; set; }
         [Required]
         public int quantity { get; set; }

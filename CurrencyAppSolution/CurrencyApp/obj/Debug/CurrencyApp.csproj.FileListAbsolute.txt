@@ -80,3 +80,5 @@ F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\Currency
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyApp\obj\Debug\CurrencyApp.csprojResolveAssemblyReference.cache
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyApp\obj\Debug\CurrencyApp.dll
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyApp\obj\Debug\CurrencyApp.pdb
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyApp\bin\Models.dll
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyApp\bin\Models.pdb

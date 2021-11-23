@@ -15,6 +15,7 @@ F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\Currency
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\CurrencyService.dll
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\CurrencyService.pdb
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\Antlr3.Runtime.dll
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\BLL.dll
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\Microsoft.AI.Agent.Intercept.dll
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\Microsoft.AI.DependencyCollector.dll
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\Microsoft.AI.PerfCounterCollector.dll
@@ -24,6 +25,7 @@ F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\Currency
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\Microsoft.ApplicationInsights.dll
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\Microsoft.Web.Infrastructure.dll
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\Models.dll
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\Newtonsoft.Json.dll
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\System.Net.Http.Formatting.dll
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\System.Web.Helpers.dll
@@ -36,6 +38,10 @@ F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\Currency
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\System.Web.WebPages.dll
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\System.Web.WebPages.Razor.dll
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\WebGrease.dll
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\DAL.dll
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\EntityFramework.dll
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\BLL.pdb
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\Models.pdb
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\Microsoft.AI.DependencyCollector.xml
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\Microsoft.AI.ServerTelemetryChannel.xml
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\Microsoft.AI.Web.xml
@@ -54,5 +60,8 @@ F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\Currency
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\System.Web.WebPages.Deployment.xml
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\System.Web.WebPages.Razor.xml
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\Antlr3.Runtime.pdb
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\DAL.pdb
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\EntityFramework.xml
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\obj\Debug\CurrencyService.csprojResolveAssemblyReference.cache
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\obj\Debug\CurrencyService.dll
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\obj\Debug\CurrencyService.pdb

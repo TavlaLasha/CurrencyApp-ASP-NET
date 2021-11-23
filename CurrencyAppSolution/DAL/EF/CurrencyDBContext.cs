@@ -13,6 +13,7 @@ namespace DAL.EF
         }
 
         public virtual DbSet<Currency> Currencies { get; set; }
+        public virtual DbSet<CurrencyChangeLog> CurrencyChangeLogs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
