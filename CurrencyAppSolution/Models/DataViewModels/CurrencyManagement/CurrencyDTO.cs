@@ -23,8 +23,10 @@ namespace Models.DataViewModels.CurrencyManagement
         [Required]
         public double diff { get; set; }
         [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime date { get; set; }
         [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime validFromDate { get; set; }
     }
     public class CurrencyRoot

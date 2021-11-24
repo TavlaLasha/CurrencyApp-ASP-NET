@@ -8,7 +8,7 @@
 
 @if (User.IsInRole("Admin"))
 {
-    @Html.ActionLink("Update with latest data", "FillDBWithNew", new { user = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@")) }, new { @class = "btn btn-secondary" })
+    @Html.ActionLink("Update with latest data", "FillDBWithNew", new { user = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@")) }, new { @class = "btn btn-outline-primary" })
 }
 
 <table class="table">

@@ -36,25 +36,28 @@ namespace BLL.Services
                 {
                     var curr = db.Currencies.Where(i => i.code == cdt.code).First();
 
-                    logs.Add(new CurrencyChangeLog
+                    string diff = CheckDifferences(curr, cdt);
+                    if (!diff.Equals("No Changes"))
                     {
-                        User = user,
-                        CurrencyName = cdt.code,
-                        Updated_At = DateTime.Now,
-                        Data = CheckDifferences(curr, cdt)
-                    });
-                    
+                        logs.Add(new CurrencyChangeLog
+                        {
+                            User = user,
+                            CurrencyName = cdt.code,
+                            Updated_At = DateTime.Now,
+                            Data = diff
+                        });
 
-                    curr.quantity = cdt.quantity;
-                    curr.rateFormated = cdt.rateFormated;
-                    curr.diffFormated = cdt.diffFormated;
-                    curr.rate = cdt.rate;
-                    curr.name = cdt.name;
-                    curr.diff = cdt.diff;
-                    curr.date = cdt.date;
-                    curr.validFromDate = cdt.validFromDate;
+                        curr.quantity = cdt.quantity;
+                        curr.rateFormated = cdt.rateFormated;
+                        curr.diffFormated = cdt.diffFormated;
+                        curr.rate = cdt.rate;
+                        curr.name = cdt.name;
+                        curr.diff = cdt.diff;
+                        curr.date = cdt.date;
+                        curr.validFromDate = cdt.validFromDate;
 
-                    updated.Add(cdt.code);
+                        updated.Add(cdt.code);
+                    }
                 }
                 else
                 {
@@ -92,27 +95,30 @@ namespace BLL.Services
             using (DbContextTransaction transaction = db.Database.BeginTransaction())
             {
                 var curr = db.Currencies.Where(i => i.code.Equals(code)).First();
+                
+                string diff = CheckDifferences(curr, dt);
+                if (!diff.Equals("No Changes"))
+                {
+                    CurrencyChangeLog log = new CurrencyChangeLog();
+                    log.User = user;
+                    log.CurrencyName = code;
+                    log.Updated_At = DateTime.Now;
+                    log.Data = diff;
+                    db.CurrencyChangeLogs.Add(log);
 
-                CurrencyChangeLog log = new CurrencyChangeLog();
 
-                log.User = user;
-                log.CurrencyName = code;
-                log.Updated_At = DateTime.Now;
-                log.Data = CheckDifferences(curr, dt);
+                    curr.quantity = dt.quantity;
+                    curr.rateFormated = dt.rateFormated;
+                    curr.diffFormated = dt.diffFormated;
+                    curr.rate = dt.rate;
+                    curr.name = dt.name;
+                    curr.diff = dt.diff;
+                    curr.date = dt.date;
+                    curr.validFromDate = dt.validFromDate;
 
-                db.CurrencyChangeLogs.Add(log);
-
-                curr.quantity = dt.quantity;
-                curr.rateFormated = dt.rateFormated;
-                curr.diffFormated = dt.diffFormated;
-                curr.rate = dt.rate;
-                curr.name = dt.name;
-                curr.diff = dt.diff;
-                curr.date = dt.date;
-                curr.validFromDate = dt.validFromDate;
-
-                db.SaveChanges();
-                transaction.Commit();
+                    db.SaveChanges();
+                    transaction.Commit();
+                }
             }
             return true;
         }
