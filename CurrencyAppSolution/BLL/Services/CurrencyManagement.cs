@@ -12,13 +12,13 @@ using System.Data.Entity;
 
 namespace BLL.Services
 {
-    public class CurrecnyManagement : ICurrecnyManagement
+    public class CurrencyManagement : ICurrencyManagement
     {
         static HttpClient client = new HttpClient();
         string CurrencyURL = "https://nbg.gov.ge/gw/api/ct/monetarypolicy/currencies/ka/json";
         CurrencyDBContext db = new CurrencyDBContext();
 
-        public bool FillDBWithNew()
+        public List<string> FillDBWithNew(string user)
         {
             HttpResponseMessage response = client.GetAsync(CurrencyURL).Result;
             List<CurrencyRoot> ct = new List<CurrencyRoot>();
@@ -28,11 +28,22 @@ namespace BLL.Services
             }
             List<CurrencyDTO> c = ct[0].currencies;
             List<Currency> curs = new List<Currency>();
+            List<CurrencyChangeLog> logs = new List<CurrencyChangeLog>();
+            List<string> updated = new List<string>();
             foreach (CurrencyDTO cdt in c)
             {
                 if(db.Currencies.Any(i => i.code == cdt.code))
                 {
                     var curr = db.Currencies.Where(i => i.code == cdt.code).First();
+
+                    logs.Add(new CurrencyChangeLog
+                    {
+                        User = user,
+                        CurrencyName = cdt.code,
+                        Updated_At = DateTime.Now,
+                        Data = CheckDifferences(curr, cdt)
+                    });
+                    
 
                     curr.quantity = cdt.quantity;
                     curr.rateFormated = cdt.rateFormated;
@@ -42,6 +53,8 @@ namespace BLL.Services
                     curr.diff = cdt.diff;
                     curr.date = cdt.date;
                     curr.validFromDate = cdt.validFromDate;
+
+                    updated.Add(cdt.code);
                 }
                 else
                 {
@@ -60,11 +73,13 @@ namespace BLL.Services
                 }
             }
             if (curs.Any())
-            {
                 db.Currencies.AddRange(curs);
-            }
+
+            if (logs.Any())
+                db.CurrencyChangeLogs.AddRange(logs);
+
             db.SaveChanges();
-            return true;
+            return updated;
         }
 
         public bool EditCurrency(string code, string user, CurrencyDTO dt)
@@ -83,19 +98,7 @@ namespace BLL.Services
                 log.User = user;
                 log.CurrencyName = code;
                 log.Updated_At = DateTime.Now;
-
-                StringBuilder dat = new StringBuilder();
-
-                dat.Append((curr.quantity != dt.quantity)? $"quantity:{curr.quantity} -> {dt.quantity}" : "");
-                dat.Append((curr.rateFormated != dt.rateFormated) ? $"rateFormated:{curr.rateFormated} -> {dt.rateFormated}" : "");
-                dat.Append((curr.diffFormated != dt.diffFormated) ? $"diffFormated:{curr.diffFormated} -> {dt.diffFormated}" : "");
-                dat.Append((curr.rate != dt.rate) ? $"rate:{curr.rate} -> {dt.rate}" : "");
-                dat.Append((curr.name != dt.name) ? $"name:{curr.name} -> {dt.name}" : "");
-                dat.Append((curr.diff != dt.diff) ? $"diff:{curr.diff} -> {dt.diff}" : "");
-                dat.Append((curr.date != dt.date) ? $"date:{curr.date} -> {dt.date}" : "");
-                dat.Append((curr.validFromDate != dt.validFromDate) ? $"validFromDate:{curr.validFromDate} -> {dt.validFromDate}" : "");
-
-                log.Data = dat.ToString();
+                log.Data = CheckDifferences(curr, dt);
 
                 db.CurrencyChangeLogs.Add(log);
 
@@ -144,6 +147,35 @@ namespace BLL.Services
                 date = i.date,
                 validFromDate = i.validFromDate
             }).FirstOrDefault();
+        }
+
+        public string CheckDifferences(Currency old, CurrencyDTO changed)
+        {
+            try
+            {
+                StringBuilder dat = new StringBuilder();
+
+                dat.Append((old.quantity != changed.quantity) ? $"quantity:{old.quantity} -> {changed.quantity} " : "");
+                dat.Append((old.rateFormated != changed.rateFormated) ? $"rateFormated:{old.rateFormated} -> {changed.rateFormated} " : "");
+                dat.Append((old.diffFormated != changed.diffFormated) ? $"diffFormated:{old.diffFormated} -> {changed.diffFormated} " : "");
+                dat.Append((old.rate != changed.rate) ? $"rate:{old.rate} -> {changed.rate} " : "");
+                dat.Append((old.name != changed.name) ? $"name:{old.name} -> {changed.name} " : "");
+                dat.Append((old.diff != changed.diff) ? $"diff:{old.diff} -> {changed.diff} " : "");
+                dat.Append((old.date.Date != changed.date.Date) ? $"date:{old.date} -> {changed.date} " : "");
+                dat.Append((old.validFromDate.Date != changed.validFromDate.Date) ? $"validFromDate:{old.validFromDate} -> {changed.validFromDate} " : "");
+
+                if(dat.Length == 0)
+                {
+                    dat.Append("No Changes");
+                }
+
+                return dat.ToString();
+            }
+            catch
+            {
+                return "Error When Differentiating";
+            }
+            
         }
     }
 }

@@ -36,6 +36,26 @@ namespace CurrencyApp.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        public ActionResult FillDBWithNew(string user)
+        {
+            try
+            {
+                HttpResponseMessage response = client.GetAsync($"{BaseURL}/FillDBWithLatest/{user}").Result;
+                List<string> updated = new List<string>();
+                if (response.IsSuccessStatusCode)
+                {
+                    updated = JsonConvert.DeserializeObject<List<string>>(response.Content.ReadAsStringAsync().Result);
+                }
+                TempData["codes"] = updated;
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                return new HttpNotFoundResult();
+            }
+        }
+
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(string code)
         {
             try
@@ -67,12 +87,14 @@ namespace CurrencyApp.Controllers
                 string output = JsonConvert.SerializeObject(currency);
                 var stringContent = new StringContent(output, Encoding.UTF8, "application/json");
 
-                HttpResponseMessage response = client.PostAsync($"{BaseURL}/EditCurrency/{code}/{User.Identity.Name}", stringContent).Result;
+                HttpResponseMessage response = client.PostAsync($"{BaseURL}/EditCurrency/{code}/{User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"))}", stringContent).Result;
 
                 if (!response.IsSuccessStatusCode)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
                 }
+
+                TempData["codes"] = new List<string> { code };
 
                 return RedirectToAction("Index");
             }

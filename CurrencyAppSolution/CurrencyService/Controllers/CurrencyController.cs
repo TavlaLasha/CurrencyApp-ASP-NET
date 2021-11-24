@@ -11,11 +11,11 @@ namespace CurrencyService.Controllers
 {
     public class CurrencyController : ApiController
     {
-        CurrecnyManagement currM = new CurrecnyManagement();
+        CurrencyManagement currM = new CurrencyManagement();
 
-        [Route("api/Currency/FillDBWithLatest")]
+        [Route("api/Currency/FillDBWithLatest/{user}")]
         [HttpGet]
-        public bool FillDBWithLatest() => currM.FillDBWithNew();
+        public List<string> FillDBWithLatest(string user) => currM.FillDBWithNew(user);
 
         [Route("api/Currency/EditCurrency/{code}/{user}")]
         [HttpPost]

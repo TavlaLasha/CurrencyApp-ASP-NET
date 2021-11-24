@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace BLL.Contracts
 {
-    public interface ICurrecnyManagement
+    public interface ICurrencyManagement
     {
         IEnumerable<CurrencyDTO> GetAllCurrencies();
         CurrencyDTO GetCurrency(string code);
-        bool FillDBWithNew();
+        List<string> FillDBWithNew(string user);
         bool EditCurrency(string code, string user, CurrencyDTO dt);
     }
 }

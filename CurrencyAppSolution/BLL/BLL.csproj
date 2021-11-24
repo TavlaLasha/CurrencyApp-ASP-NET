@@ -50,9 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\ICurrecnyManagement.cs" />
+    <Compile Include="Contracts\ICurrencyManagement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\CurrecnyManagement.cs" />
+    <Compile Include="Services\CurrencyManagement.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

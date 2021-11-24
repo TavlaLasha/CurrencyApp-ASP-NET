@@ -6,6 +6,11 @@
 
 <h2>Currency Data</h2>
 
+@if (User.IsInRole("Admin"))
+{
+    @Html.ActionLink("Update with latest data", "FillDBWithNew", new { user = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@")) }, new { @class = "btn btn-secondary" })
+}
+
 <table class="table">
     <tr>
         <th>
@@ -39,7 +44,7 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+    <tr @((TempData["codes"] != null) ? (((TempData["codes"] as List<string>).Any(i=>i.ToString().Equals(item.code))) ? "class=success" : String.Empty) : String.Empty) >
         <td>
             @Html.DisplayFor(modelItem => item.code)
         </td>

@@ -22,7 +22,9 @@ namespace Models.DataViewModels.CurrencyManagement
         public string name { get; set; }
         [Required]
         public double diff { get; set; }
+        [DataType(DataType.Date)]
         public DateTime date { get; set; }
+        [DataType(DataType.Date)]
         public DateTime validFromDate { get; set; }
     }
     public class CurrencyRoot
