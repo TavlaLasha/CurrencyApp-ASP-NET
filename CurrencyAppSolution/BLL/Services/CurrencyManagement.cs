@@ -119,6 +119,10 @@ namespace BLL.Services
                     db.SaveChanges();
                     transaction.Commit();
                 }
+                else
+                {
+                    return false;
+                }
             }
             return true;
         }

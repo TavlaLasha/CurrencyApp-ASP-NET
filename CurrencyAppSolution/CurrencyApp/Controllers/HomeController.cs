@@ -89,12 +89,18 @@ namespace CurrencyApp.Controllers
 
                 HttpResponseMessage response = client.PostAsync($"{BaseURL}/EditCurrency/{code}/{User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"))}", stringContent).Result;
 
-                if (!response.IsSuccessStatusCode)
+                bool updated;
+                if (response.IsSuccessStatusCode)
+                {
+                    updated = JsonConvert.DeserializeObject<bool>(response.Content.ReadAsStringAsync().Result);
+                }
+                else
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
                 }
 
-                TempData["codes"] = new List<string> { code };
+                if(updated)
+                    TempData["codes"] = new List<string> { code };
 
                 return RedirectToAction("Index");
             }
