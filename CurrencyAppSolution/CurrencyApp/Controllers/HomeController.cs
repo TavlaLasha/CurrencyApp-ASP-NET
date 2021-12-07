@@ -66,7 +66,7 @@ namespace CurrencyApp.Controllers
                 {
                     ct = JsonConvert.DeserializeObject<CurrencyDTO>(response.Content.ReadAsStringAsync().Result);
                 }
-                return View(ct);
+                return PartialView("_EditPartial", ct);
             }
             catch (Exception ex)
             {
@@ -75,9 +75,9 @@ namespace CurrencyApp.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult Edit(string code, HttpPostedFileBase file, [Bind(Include = "quantity, rateFormated, diffFormated, rate, name, diff, date, validFromDate")] CurrencyDTO currency)
+        public ActionResult Edit(string code, [Bind(Include = "quantity, rateFormated, diffFormated, rate, name, diff, date, validFromDate")] CurrencyDTO currency)
         {
             try
             {
@@ -98,11 +98,12 @@ namespace CurrencyApp.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
                 }
+                bool changed = false;
+                if (updated)
+                    changed = true;
 
-                if(updated)
-                    TempData["codes"] = new List<string> { code };
 
-                return RedirectToAction("Index");
+                return Json(new { Changed = changed, JsonRequestBehavior.AllowGet });
             }
             catch (Exception ex)
             {
