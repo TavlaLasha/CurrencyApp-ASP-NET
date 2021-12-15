@@ -51,8 +51,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\ICurrencyManagement.cs" />
+    <Compile Include="Contracts\ILogManagement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CurrencyManagement.cs" />
+    <Compile Include="Services\LogManagement.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

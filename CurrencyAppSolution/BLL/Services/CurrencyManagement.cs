@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL.EF;
 using System.Data.Entity;
+using DAL.Repository;
+using DAL;
 
 namespace BLL.Services
 {
@@ -16,26 +18,29 @@ namespace BLL.Services
     {
         static HttpClient client = new HttpClient();
         string CurrencyURL = "https://nbg.gov.ge/gw/api/ct/monetarypolicy/currencies/ka/json";
-        CurrencyDBContext db = new CurrencyDBContext();
 
         public List<string> FillDBWithNew(string user)
         {
+            UnitOfWork _unitOfWork = new UnitOfWork(new CurrencyDBContext());
+
             HttpResponseMessage response = client.GetAsync(CurrencyURL).Result;
             List<CurrencyRoot> ct = new List<CurrencyRoot>();
             if (response.IsSuccessStatusCode)
             {
                 ct = JsonConvert.DeserializeObject<List<CurrencyRoot>>(response.Content.ReadAsStringAsync().Result);
             }
-            List<CurrencyDTO> c = ct[0].currencies;
-            List<Currency> curs = new List<Currency>();
+
+            List<CurrencyDTO> newCurs = new List<CurrencyDTO>();
             List<CurrencyChangeLog> logs = new List<CurrencyChangeLog>();
             List<string> updated = new List<string>();
-            foreach (CurrencyDTO cdt in c)
-            {
-                if(db.Currencies.Any(i => i.code == cdt.code))
-                {
-                    var curr = db.Currencies.Where(i => i.code == cdt.code).First();
+            Dictionary<string, CurrencyDTO> currencyDict = new Dictionary<string, CurrencyDTO>();
 
+            foreach (CurrencyDTO cdt in ct[0].currencies)
+            {
+                CurrencyDTO curr = _unitOfWork.CurrencyRepo.GetCurrency(cdt.code);
+
+                if (curr != null)
+                {
                     string diff = CheckDifferences(curr, cdt);
                     if (!diff.Equals("No Changes"))
                     {
@@ -47,119 +52,76 @@ namespace BLL.Services
                             Data = diff
                         });
 
-                        curr.quantity = cdt.quantity;
-                        curr.rateFormated = cdt.rateFormated;
-                        curr.diffFormated = cdt.diffFormated;
-                        curr.rate = cdt.rate;
-                        curr.name = cdt.name;
-                        curr.diff = cdt.diff;
-                        curr.date = cdt.date;
-                        curr.validFromDate = cdt.validFromDate;
+                        currencyDict.Add(cdt.code, cdt);
 
                         updated.Add(cdt.code);
                     }
                 }
                 else
                 {
-                    curs.Add(new Currency
-                    {
-                        code = cdt.code,
-                        quantity = cdt.quantity,
-                        rateFormated = cdt.rateFormated,
-                        diffFormated = cdt.diffFormated,
-                        rate = cdt.rate,
-                        name = cdt.name,
-                        diff = cdt.diff,
-                        date = cdt.date,
-                        validFromDate = cdt.validFromDate
-                    });
+                    newCurs.Add(cdt);
                 }
             }
-            if (curs.Any())
-                db.Currencies.AddRange(curs);
+            if (newCurs.Any())
+                _unitOfWork.CurrencyRepo.AddCurrencies(newCurs);
 
             if (logs.Any())
-                db.CurrencyChangeLogs.AddRange(logs);
+                _unitOfWork.LogRepo.AddLogs(logs);
 
-            db.SaveChanges();
+            if (currencyDict.Any())
+                _unitOfWork.CurrencyRepo.EditCurrencies(currencyDict);
+
+            _unitOfWork.Save();
+
             return updated;
         }
 
         public bool EditCurrency(string code, string user, CurrencyDTO dt)
         {
+            UnitOfWork _unitOfWork = new UnitOfWork(new CurrencyDBContext());
+
             if (user.Equals(""))
                 throw new Exception($"Forbidden request!");
 
-            if (!db.Currencies.Any(i => i.code.Equals(code)))
-                throw new Exception($"Currency with code {dt.code} not found!");
-            using (DbContextTransaction transaction = db.Database.BeginTransaction())
+            if (_unitOfWork.CurrencyRepo.GetCurrency(code) == null)
+                throw new Exception($"Currency with code {code} not found!");
+
+            CurrencyDTO curr = _unitOfWork.CurrencyRepo.GetCurrency(code);
+
+            string diff = CheckDifferences(curr, dt);
+            if (!diff.Equals("No Changes"))
             {
-                var curr = db.Currencies.Where(i => i.code.Equals(code)).First();
-                
-                string diff = CheckDifferences(curr, dt);
-                if (!diff.Equals("No Changes"))
+                _unitOfWork.LogRepo.AddLogs(new List<CurrencyChangeLog> { new CurrencyChangeLog
                 {
-                    CurrencyChangeLog log = new CurrencyChangeLog();
-                    log.User = user;
-                    log.CurrencyName = code;
-                    log.Updated_At = DateTime.Now;
-                    log.Data = diff;
-                    db.CurrencyChangeLogs.Add(log);
+                    User = user,
+                    CurrencyName = code,
+                    Updated_At = DateTime.Now,
+                    Data = diff
+                } });
 
-
-                    curr.quantity = dt.quantity;
-                    curr.rateFormated = dt.rateFormated;
-                    curr.diffFormated = dt.diffFormated;
-                    curr.rate = dt.rate;
-                    curr.name = dt.name;
-                    curr.diff = dt.diff;
-                    curr.date = dt.date;
-                    curr.validFromDate = dt.validFromDate;
-
-                    db.SaveChanges();
-                    transaction.Commit();
-                }
-                else
-                {
-                    return false;
-                }
+                _unitOfWork.CurrencyRepo.EditCurrencies(new Dictionary<string, CurrencyDTO>() { { code, dt } });
+                _unitOfWork.Save();
+            }
+            else
+            {
+                return false;
             }
             return true;
         }
 
         public IEnumerable<CurrencyDTO> GetAllCurrencies()
         {
-            return db.Currencies.Select(i => new CurrencyDTO
-            {
-                code = i.code,
-                quantity = i.quantity,
-                rateFormated = i.rateFormated,
-                diffFormated = i.diffFormated,
-                rate = i.rate,
-                name = i.name,
-                diff = i.diff,
-                date = i.date,
-                validFromDate = i.validFromDate
-            });
+            UnitOfWork _unitOfWork = new UnitOfWork(new CurrencyDBContext());
+            return _unitOfWork.CurrencyRepo.GetAllCurrencies();
         }
 
         public CurrencyDTO GetCurrency(string code)
         {
-            return db.Currencies.Where(i=>i.code.Equals(code)).Select(i => new CurrencyDTO
-            {
-                code = i.code,
-                quantity = i.quantity,
-                rateFormated = i.rateFormated,
-                diffFormated = i.diffFormated,
-                rate = i.rate,
-                name = i.name,
-                diff = i.diff,
-                date = i.date,
-                validFromDate = i.validFromDate
-            }).FirstOrDefault();
+            UnitOfWork _unitOfWork = new UnitOfWork(new CurrencyDBContext());
+            return _unitOfWork.CurrencyRepo.GetCurrency(code);
         }
 
-        public string CheckDifferences(Currency old, CurrencyDTO changed)
+        public string CheckDifferences(CurrencyDTO old, CurrencyDTO changed)
         {
             try
             {

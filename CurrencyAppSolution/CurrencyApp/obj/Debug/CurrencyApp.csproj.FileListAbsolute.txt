@@ -82,3 +82,7 @@ F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\Currency
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyApp\obj\Debug\CurrencyApp.pdb
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyApp\bin\Models.dll
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyApp\bin\Models.pdb
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyApp\bin\PagedList.dll
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyApp\bin\PagedList.Mvc.dll
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyApp\bin\PagedList.xml
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyApp\bin\PagedList.Mvc.xml

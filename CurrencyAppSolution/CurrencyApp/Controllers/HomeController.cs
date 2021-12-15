@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace CurrencyApp.Controllers
 {
@@ -21,7 +22,7 @@ namespace CurrencyApp.Controllers
         {
             try
             {
-                HttpResponseMessage response = client.GetAsync($"{BaseURL}/GetAll").Result;
+                HttpResponseMessage response = client.GetAsync($"{BaseURL}Currency/GetAll").Result;
                 List<CurrencyDTO> ct = new List<CurrencyDTO>();
                 if (response.IsSuccessStatusCode)
                 {
@@ -40,7 +41,7 @@ namespace CurrencyApp.Controllers
         {
             try
             {
-                HttpResponseMessage response = client.GetAsync($"{BaseURL}/FillDBWithLatest/{user}").Result;
+                HttpResponseMessage response = client.GetAsync($"{BaseURL}Currency/FillDBWithLatest/{user}").Result;
                 List<string> updated = new List<string>();
                 if (response.IsSuccessStatusCode)
                 {
@@ -60,7 +61,7 @@ namespace CurrencyApp.Controllers
         {
             try
             {
-                HttpResponseMessage response = client.GetAsync($"{BaseURL}/GetCurrency/{code}").Result;
+                HttpResponseMessage response = client.GetAsync($"{BaseURL}Currency/GetCurrency/{code}").Result;
                 CurrencyDTO ct = new CurrencyDTO();
                 if (response.IsSuccessStatusCode)
                 {
@@ -87,7 +88,7 @@ namespace CurrencyApp.Controllers
                 string output = JsonConvert.SerializeObject(currency);
                 var stringContent = new StringContent(output, Encoding.UTF8, "application/json");
 
-                HttpResponseMessage response = client.PostAsync($"{BaseURL}/EditCurrency/{code}/{User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"))}", stringContent).Result;
+                HttpResponseMessage response = client.PostAsync($"{BaseURL}Currency/EditCurrency/{code}/{User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"))}", stringContent).Result;
 
                 bool updated;
                 if (response.IsSuccessStatusCode)
@@ -104,6 +105,26 @@ namespace CurrencyApp.Controllers
 
 
                 return Json(new { Changed = changed, JsonRequestBehavior.AllowGet });
+            }
+            catch (Exception ex)
+            {
+                return new HttpNotFoundResult();
+            }
+        }
+
+        public ActionResult GetLogs(int page=1)
+        {
+            try
+            {
+                HttpResponseMessage response = client.GetAsync($"{BaseURL}Log/GetAll").Result;
+                List<LogDTO> ct = new List<LogDTO>();
+                if (response.IsSuccessStatusCode)
+                {
+                    ct = JsonConvert.DeserializeObject<List<LogDTO>>(response.Content.ReadAsStringAsync().Result);
+                }
+                PagedList<LogDTO> model = new PagedList<LogDTO>(ct, page, 15);
+
+                return View(model);
             }
             catch (Exception ex)
             {

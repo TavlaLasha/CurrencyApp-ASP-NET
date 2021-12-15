@@ -58,6 +58,11 @@
     <Compile Include="EF\CurrencyChangeLog.cs" />
     <Compile Include="EF\CurrencyDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\CurrencyRepository.cs" />
+    <Compile Include="Repository\Interfaces\ICurrencyRepository.cs" />
+    <Compile Include="Repository\Interfaces\ILogRepository.cs" />
+    <Compile Include="Repository\LogRepository.cs" />
+    <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -8,6 +8,7 @@
 
 @if (User.IsInRole("Admin"))
 {
+    @Html.ActionLink("Check Update Logs", "GetLogs", new { }, new { @class = "btn btn-primary" })
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" style="float: right;">
         Update with latest data
     </button>
