@@ -9,7 +9,7 @@ using Models.DataViewModels.CurrencyManagement;
 
 namespace DAL.Repository
 {
-    public class LogRepository : ILogRepository
+    public class LogRepository : ILogRepository, IDisposable
     {
         private CurrencyDBContext _db;
         public LogRepository(CurrencyDBContext db)

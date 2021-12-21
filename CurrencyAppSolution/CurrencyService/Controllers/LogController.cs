@@ -1,4 +1,4 @@
-﻿using BLL.Services;
+﻿using BLL.Contracts;
 using Models.DataViewModels.CurrencyManagement;
 using System;
 using System.Collections.Generic;
@@ -11,10 +11,14 @@ namespace CurrencyService.Controllers
 {
     public class LogController : ApiController
     {
-        LogManagement logM = new LogManagement();
+        readonly ILogManagement logyManagement;
+        public LogController(ILogManagement logyManagement)
+        {
+            this.logyManagement = logyManagement;
+        }
 
         [Route("api/Log/GetAll")]
         [HttpGet]
-        public IEnumerable<LogDTO> GetAllCurrencies() => logM.GetAllLogs();
+        public IEnumerable<LogDTO> GetAllCurrencies() => logyManagement.GetAllLogs();
     }
 }

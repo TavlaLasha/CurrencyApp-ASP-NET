@@ -62,6 +62,16 @@ F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\Currency
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\Antlr3.Runtime.pdb
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\DAL.pdb
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\EntityFramework.xml
-F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\obj\Debug\CurrencyService.csprojResolveAssemblyReference.cache
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\obj\Debug\CurrencyService.dll
 F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\obj\Debug\CurrencyService.pdb
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\obj\Debug\CurrencyService.csproj.AssemblyReference.cache
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\obj\Debug\CurrencyService.csproj.CoreCompileInputs.cache
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\System.Runtime.CompilerServices.Unsafe.dll
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\Unity.Abstractions.dll
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\Unity.Container.dll
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\Unity.WebApi.dll
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\System.Runtime.CompilerServices.Unsafe.xml
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\Unity.Abstractions.pdb
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\Unity.Container.pdb
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\bin\DAL.dll.config
+F:\Desktop\Lasha\GAU\C#\ASP.NET\CurrencyApp-ASP-NET\CurrencyAppSolution\CurrencyService\obj\Debug\CurrencyService.csproj.CopyComplete

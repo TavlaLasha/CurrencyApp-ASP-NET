@@ -40,9 +40,25 @@ namespace DAL
                 return _logRepo;
             }
         }
-        public void Save()
+        public bool Save()
         {
-            _db.SaveChanges();
+            bool jobDone = true;
+            using (var dbContextTransaction = _db.Database.BeginTransaction())
+            {
+                try
+                {
+                    _db.SaveChanges();
+                    dbContextTransaction.Commit();
+                }
+                catch (Exception)
+                {
+                    //Log Exception Handling message                      
+                    jobDone = false;
+                    dbContextTransaction.Rollback();
+                }
+            }
+
+            return jobDone;
         }
     }
 }
