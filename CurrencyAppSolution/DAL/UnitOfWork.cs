@@ -2,6 +2,7 @@
 using DAL.Repository;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,8 @@ namespace DAL
         private LogRepository _logRepo;
         private CurrencyRepository _currencyRepo;
         private CurrencyDBContext _db;
+
+        private DbContextTransaction dbContextTransaction;
 
         public UnitOfWork(CurrencyDBContext db)
         {
@@ -40,24 +43,49 @@ namespace DAL
                 return _logRepo;
             }
         }
+
+        public bool BeginTransaction()
+        {
+            bool jobDone = true;
+            try
+            {
+                dbContextTransaction = _db.Database.BeginTransaction();
+            }
+            catch (Exception)
+            {                 
+                jobDone = false;
+            }
+            return jobDone;
+        }
+        public bool CommitTransaction()
+        {
+            bool jobDone = true;
+            if (dbContextTransaction == null)
+                throw new Exception("Transaction Not Started");
+
+            try
+            {
+                dbContextTransaction.Commit();
+            }
+            catch (Exception)
+            {
+                jobDone = false;
+                dbContextTransaction.Rollback();
+            }
+            dbContextTransaction.Dispose();
+            return jobDone;
+        }
         public bool Save()
         {
             bool jobDone = true;
-            using (var dbContextTransaction = _db.Database.BeginTransaction())
+            try
             {
-                try
-                {
-                    _db.SaveChanges();
-                    dbContextTransaction.Commit();
-                }
-                catch (Exception)
-                {
-                    //Log Exception Handling message                      
-                    jobDone = false;
-                    dbContextTransaction.Rollback();
-                }
+                _db.SaveChanges();
             }
-
+            catch (Exception)
+            {                   
+                jobDone = false;
+            }
             return jobDone;
         }
     }

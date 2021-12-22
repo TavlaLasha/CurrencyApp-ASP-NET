@@ -62,6 +62,8 @@ namespace BLL.Services
                     newCurs.Add(cdt);
                 }
             }
+            _unitOfWork.BeginTransaction();
+
             if (newCurs.Any())
                 _unitOfWork.CurrencyRepo.AddCurrencies(newCurs);
 
@@ -72,6 +74,7 @@ namespace BLL.Services
                 _unitOfWork.CurrencyRepo.EditCurrencies(currencyDict);
 
             _unitOfWork.Save();
+            _unitOfWork.CommitTransaction();
 
             return updated;
         }
@@ -91,6 +94,7 @@ namespace BLL.Services
             string diff = CheckDifferences(curr, dt);
             if (!diff.Equals("No Changes"))
             {
+                _unitOfWork.BeginTransaction();
                 _unitOfWork.LogRepo.AddLogs(new List<CurrencyChangeLog> { new CurrencyChangeLog
                 {
                     User = user,
@@ -101,6 +105,7 @@ namespace BLL.Services
 
                 _unitOfWork.CurrencyRepo.EditCurrencies(new Dictionary<string, CurrencyDTO>() { { code, dt } });
                 _unitOfWork.Save();
+                _unitOfWork.CommitTransaction();
             }
             else
             {
